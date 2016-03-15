@@ -47,7 +47,7 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:name, :progress, :url)
     end
-    
+=begin
     def get_progress(member)
     # URLにアクセスするためのライブラリの読み込み
     require 'open-uri'
@@ -70,4 +70,5 @@ class MembersController < ApplicationController
           progress+=node.css('.status-icon')[1].value+","
         end
     end
+=end
 end
