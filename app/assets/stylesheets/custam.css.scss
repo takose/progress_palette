@@ -51,11 +51,19 @@ p {
   line-height: 1.7em;
 }
 
+.navbar{
+  background: #506C64 !important;
+}
+
+.navbar a{
+  color: #77CBB9 !important;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: #77CBB9;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
