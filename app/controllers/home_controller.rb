@@ -1,3 +1,5 @@
+#require 'phantomjs'
+
 class HomeController < ApplicationController
   def top
     if current_user

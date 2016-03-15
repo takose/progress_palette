@@ -7,6 +7,7 @@ class MembersController < ApplicationController
   
   def create
     @member = current_user.members.new(member_params)
+#    @member.progress = get_progress(@member)
     if @member.save
       redirect_to root_url
     end
@@ -20,6 +21,7 @@ class MembersController < ApplicationController
     @member=Member.find(params[:id])
     @member.name=params[:name]
     @member.progress=params[:progress]
+ #   @member.progress = get_progress(@member)
     if @member.save
       redirect_to root_path
     else
@@ -41,10 +43,31 @@ class MembersController < ApplicationController
         redirect_to login_url
       end
     end
-    
-    
+
     def member_params
-      params.require(:member).permit(:name, :progress)
+      params.require(:member).permit(:name, :progress, :url)
     end
     
+    def get_progress(member)
+    # URLにアクセスするためのライブラリの読み込み
+    require 'open-uri'
+    # Nokogiriライブラリの読み込み
+    require 'nokogiri'
+    require 'net/http'
+    require 'uri'
+    
+    # スクレイピング先のURL
+        url = member.url
+        charset = nil
+        html = open(url) do |f|
+          charset = f.charset # 文字種別を取得
+          f.read # htmlを読み込んで変数htmlに渡す
+        end
+        # htmlをパース(解析)してオブジェクトを生成
+        doc = Nokogiri::HTML.parse(html, nil, charset)
+        byebug
+        doc.css("table").each do |node|
+          progress+=node.css('.status-icon')[1].value+","
+        end
+    end
 end

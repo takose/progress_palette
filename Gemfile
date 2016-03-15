@@ -5,6 +5,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 gem 'bcrypt', '3.1.7'
 gem 'bootstrap-sass', '3.2.0.0'
+
+gem 'poltergeist'
+gem 'phantomjs', :require => 'phantomjs/poltergeist'
+
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

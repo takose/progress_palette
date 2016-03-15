@@ -10,7 +10,10 @@
 
       <%= label_tag :progress %>
       <%= text_field_tag :progress, @member.progress, class: 'form-control' %>
-
+      
+      <%= label_tag :url %>
+      <%= text_field_tag :url, @member.url, class: 'form-control' %>
+      
       <%= submit_tag "完了", class: "btn btn-primary" %>
     <% end %>
   </div>
