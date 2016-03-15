@@ -23,7 +23,7 @@ test:
 production:
   adapter: postgresql
   encoding: utf8
-  database: db/production.postgre
+  database: d5s5tt3jsvge3v
   port: 5432
-  username: rina.m.takase@gmail.com
-  password: jg1rym1764
+  username: znoldfvkfbbcsu
+  password: vGn2nclzI5QkezICbq2hxopCtG
