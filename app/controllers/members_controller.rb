@@ -23,6 +23,7 @@ class MembersController < ApplicationController
     @member.progress=params[:progress]
     @member.url=params[:url]
     @member.achievement=params[:achievement]
+    @member.memo=params[:memo]
  #   @member.progress = get_progress(@member)
     if @member.save
       redirect_to root_path
@@ -47,7 +48,7 @@ class MembersController < ApplicationController
     end
 
     def member_params
-      params.require(:member).permit(:name, :progress, :url, :achievement)
+      params.require(:member).permit(:name, :progress, :url, :achievement, :memo)
     end
 =begin
     def get_progress(member)

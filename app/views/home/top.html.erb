@@ -1,16 +1,28 @@
-
+<br>
 <%= link_to "追加", new_member_path ,{class: "btn btn-info", :style => "text-align:right;"} %>
 <% if current_user %>
-<% @member.each do |member| %>
     <div class="container">
         <div class="row">
-            <%= member.name %>
-            <%= member.progress %>
-            <%= link_to "編集", edit_member_path(member.id),class:"btn btn-success", role:"button" %>
-            <%= link_to "削除", member_path(member.id), :method => :delete, class:"btn btn-danger", role:"button" %>
+          <table class="table">
+            <thead>
+              <tr><th>名前</th><th>進捗</th><th>techfile</th><th>到達</th><th>メモ</th><th>編集</th><th>削除</th></tr>
+            </thead>
+            <tbody>
+            <% @member.each do |member| %>
+              <tr>
+                <td><%= member.name %></td>
+                <td><%= member.progress %></td>
+                <td><%= link_to member.url, member.url,class:"btn btn-link", role:"button" %></td>
+                <td><%= member.achievement %>/9</td>
+                <td><%= member.memo %></td>
+                <td><%= link_to "編集", edit_member_path(member.id),class:"btn btn-success", role:"button" %></td>
+                <td><%= link_to "削除", member_path(member.id), :method => :delete, class:"btn btn-danger", role:"button" %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
     </div>
-<% end %>
 <% end %>
 <script>
 </script>
