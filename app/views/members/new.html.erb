@@ -1,0 +1,17 @@
+<% provide(:title, 'Add member') %>
+<h1>Add member</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@member) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :progress %>
+      <%= f.text_field :progress, class: 'form-control' %>
+
+      <%= f.submit "Add member", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

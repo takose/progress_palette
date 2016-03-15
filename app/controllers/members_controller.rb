@@ -1,0 +1,50 @@
+class MembersController < ApplicationController
+  before_action :logged_in_user, only: [:new]
+  
+  def new
+    @member = Member.new
+  end
+  
+  def create
+    @member = current_user.members.new(member_params)
+    if @member.save
+      redirect_to root_url
+    end
+  end
+  
+  def edit
+    @member=Member.find(params[:id])
+  end
+  
+  def update
+    @member=Member.find(params[:id])
+    @member.name=params[:name]
+    @member.progress=params[:progress]
+    if @member.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+  
+  def destroy
+    @member=Member.find(params[:id])
+    @member.destroy
+    redirect_to root_path
+  end
+  
+  private
+     # ログイン済みユーザーかどうか確認
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+    
+    
+    def member_params
+      params.require(:member).permit(:name, :progress)
+    end
+    
+end

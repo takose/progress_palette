@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+
+  get 'sessions/new'
+
   root 'home#top'
   
   get 'signup' => 'users#new'
   
   resources :users
-
+  
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
 
   namespace :api, { format: 'json' } do
     resources :members

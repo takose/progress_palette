@@ -1,2 +1,14 @@
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
+
+<%= link_to "追加", new_member_path ,{class: "btn btn-info", :style => "text-align:right;"} %>
+<% if current_user %>
+<% @member.each do |member| %>
+    <div class="container">
+        <div class="row">
+            <%= member.name %>
+            <%= member.progress %>
+            <%= link_to "編集", edit_member_path(member.id),class:"btn btn-success", role:"button" %>
+            <%= link_to "削除", member_path(member.id), :method => :delete, class:"btn btn-danger", role:"button" %>
+        </div>
+    </div>
+<% end %>
+<% end %>

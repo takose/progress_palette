@@ -1,0 +1,17 @@
+<% provide(:title, 'Add member') %>
+<h1>Edit member</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_tag member_path(@member.id), method: 'patch' do %>
+
+      <%= label_tag :name %>
+      <%= text_field_tag :name, @member.name, class: 'form-control' %>
+
+      <%= label_tag :progress %>
+      <%= text_field_tag :progress, @member.progress, class: 'form-control' %>
+
+      <%= submit_tag "完了", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
